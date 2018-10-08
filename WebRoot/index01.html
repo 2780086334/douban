@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/axios.min.js"></script>
+<body>
+	<div id="dox">
+	  <button @click="fan()">点击加载评论</button>
+       <ul>
+       	  <li v-for="item in arr">
+       	  	<p>{{item.commentTxt}}</p>
+            <p>{{item.createAt | guolvqi()}}</p>
+
+       	  </li>
+       </ul>
+
+
+
+</div>
+	  <script type="text/javascript">
+	  	 var v=new Vue({
+             el:"#dox",
+             data:{
+             	arr:[]
+             },
+             filters:{
+               guolvqi:function(val){
+                 return val.substr(0,10);
+               }
+
+             },
+             methods:{
+                 fan(){
+     axios.get('http://api.artgoer.cn:8084/artgoer/api/v1/user/324380/v3/topic/topicHomeByLabel?pageIndex=1&token=b544cd63-6d42-46fe-a96c-3cf96bae3113&topicId=62187').then(
+
+            value=>{
+            	console.log(value.data.data);
+            	this.arr=value.data.data.commentList;
+            }
+
+
+     	)
+
+
+                 }
+
+             } 
+
+	  	 });
+
+	  </script>
+</body>
+</html>

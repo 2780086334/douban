@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/axios.min.js"></script>
+<body>
+	   <div id="dox">
+	   	   <ul>
+	   	 	  <li v-for="item in arr">
+	   	 	  	 {{item.title}}
+	   	 	  	 {{item.create_at | guolvqi()}}
+	   	 	  </li>
+	   	 </ul> 
+
+	   </div>
+    <script type="text/javascript">   	
+    	 var v=new Vue({
+          el:"#dox",
+          data:{
+          	arr:[]
+          },
+          created:function(){
+                this.chaxun();
+          },
+          filters:{
+           guolvqi:function(va){      
+           let an=va.substr(0,10)+" "+va.substr(11,8);
+             return an;
+           }
+
+          },
+          methods:{
+             chaxun(){
+             	axios.get('https://cnodejs.org/api/v1/topics').then(
+                       value=>{
+                       	  console.log(value.data);
+                       	  this.arr=value.data.data;
+                       }
+             		);
+             }
+
+          }
+
+	  });	
+    </script>
+
+</body>
+</html>

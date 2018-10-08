@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bdqn.dao.UserMapper">
+
+<!-- <resultMap id="newsandauthor" type="news_detail">
+  <id column="id" jdbcType="bigint" property="id" />
+  <id column="categoryId" jdbcType="bigint" property="categoryId" />
+  <id column="title" jdbcType="varchar" property="title" />
+  <id column="summary" jdbcType="varchar" property="summary" />
+  <id column="content" jdbcType="text" property="content" />
+  <id column="picPath" jdbcType="varchar" property="picPath" />
+  <id column="createDate" jdbcType="datetime" property="createDate" />
+  <id column="modifyDate" jdbcType="datetime" property="modifyDate" />
+  <result column="表的一个字段（可以为任意表的一个字段）" jdbcType="字段类型" property="映射到pojo对象的一个属性（须为type定义的pojo对象中的一个属性）"/>
+  <association property="pojo的一个对象属性" javaType="pojo关联的pojo对象">
+    <id column="关联pojo对象对应表的主键字段" jdbcType="字段类型" property="关联pojo对象的主席属性"/>
+    <result  column="任意表的字段" jdbcType="字段类型" property="关联pojo对象的属性"/>
+  </association>
+</resultMap> -->
+
+		<select id="getnewslist" resultType="news_detail">
+         SELECT * FROM `news_detail`
+        </select>
+		
+        <select id="getchaxun" resultType="Gouwuche">
+         SELECT * FROM `gouwuche`
+        </select>
+        
+        <select id="getgroup" resultType="Group">
+         SELECT * FROM `group`
+        </select>
+	  
+	  
+	  <select id="getdianyin" resultType="Dianying">
+	    select * from dianying limit 0,5
+	  </select>
+	  
+	  <select id="dengru" resultType="xuesheng">
+	        SELECT * FROM `xuesheng` where telephone=#{telephone} and age=#{age}
+	  </select>
+	
+</mapper>

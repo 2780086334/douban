@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/axios.min.js"></script>
+<body>
+	<div id="dox">
+		
+	</div>
+ <script type="text/javascript">
+	  var v=new Vue({
+          el:"#dox",
+          data:{
+          	arr:[]
+          },
+          created:function(){
+                this.chaxun();
+
+          },
+          methods:{
+             chaxun(){
+             	axios.get('http://route.showapi.com/90-87?showapi_appid=45300&showapi_sign=c28de9d6f79e44369a9abcd40fa3e277').then(
+                       value=>{
+                       	  console.log(value.data);
+                       }
+             		);
+             }
+
+          }
+
+	  });	
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+  <div id="dox">
+     <fu></fu>
+  </div>
+  
+  <template id="f">
+     <div>
+        父类 {{bb}}
+         <zi @fangfa="fangfa2"></zi>
+        
+     </div>
+  </template>
+
+  <template id="z">
+        <div @click="fn()">
+           子类
+        </div>
+  </template>
+<script type="text/javascript">
+     var v=new Vue({
+         el:"#dox",
+         components:{
+          "fu":{
+            template:"#f",
+            data:function(){
+               return{
+                bb:''
+               }
+            },
+            methods:{
+              fangfa2(val){
+                this.bb=val;
+              }
+            },
+            components:{
+              "zi":{
+                  template:"#z",
+                  data:function(){
+                      return {
+                        aa:"子类传"                       
+                      }
+                  },
+                  methods:{
+                     fn(){
+                      this.aa="子类传"
+                      alert(this.aa);
+                        this.$emit("fangfa",this.aa); 
+                     }
+                  }
+              } //zi
+
+            }           
+            
+
+          }//fu
+
+         }  
+
+
+     });
+</script>
+
+</body>
+</html>

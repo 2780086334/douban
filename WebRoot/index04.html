@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/axios.min.js"></script>
+<body>
+	<div id="dox">
+		 <p>{{an.title}}</p>
+		 <p>{{an.content}}</p>
+		 <ul>
+		 	<li v-for="item in arr">
+		 		{{item.content}}
+		 	</li>
+		 </ul>
+	</div>
+ <script type="text/javascript">   	
+    	 var v=new Vue({
+          el:"#dox",
+          data:{
+          	an:'',
+          	arr:[]
+          },
+          created:function(){
+                this.chaxun();
+          },
+          filters:{
+          
+           
+
+          },
+          methods:{
+             chaxun(){
+             	axios.get('https://cnodejs.org/api/v1/topic/5ae140407b0e8dc508cca7cc').then(
+                       value=>{
+                       	  console.log(value.data);
+                       	  this.an=value.data.data;
+                       	  this.arr=value.data.data.replies;
+                       }
+             		);
+             }
+
+          }
+
+	  });	
+    </script>
+</body>
+</html>

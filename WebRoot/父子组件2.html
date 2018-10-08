@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+   <div id="dox">
+   	 <fu></fu>
+   </div>
+<template id="f">
+	<div>
+		父类
+        <zi :name="aa"></zi>
+	</div>
+</template>
+<template id="z">
+	<div>
+		子类{{name}}
+	</div>
+</template>
+   <script type="text/javascript">
+   	 var v=new Vue({
+   	 	el:"#dox",
+        components:{
+             "fu":{
+                template:"#f",
+                 data:function(){
+                 	return{
+                 		aa:"父类传"
+                 	}
+                 },components:{
+                       "zi":{
+                       	 template:"#z",
+                       	 props: ['name']
+
+                 }
+
+
+             }//fu
+
+        }
+  
+
+   	 }
+   	});
+   </script>
+</body> 
+<!-- <body>   
+ <div id="app">    
+   <user-Parent-Comp></user-Parent-Comp>   
+    </div>
+</body> 
+ <script>  
+ 	var vm = new Vue({  
+ 	  el: '#app',  
+ 	    components: {    
+ 	      'userParentComp': {     
+ 	         template: '<h1>I am a parent component.---{{parentVal}}<br/><userChildComp :childVal="fromParentVal"/></h1>',       
+ 	          data() {         
+ 	           return {            
+ 	           	parentVal: 'I am the value of a parent class. ',            
+ 	           	fromParentVal: 'I am a value from the parent class. '    
+ 	           	      }    
+ 	           	    },   
+ 	           	    components: {      
+ 	           	        'userChildComp': {     
+ 	           	               props: ['childVal'],      
+ 	           	                     template: '<p>I am a child component.---{{childVal}}  </p>'          }     
+ 	           	                        } 
+ 	           	                             } 
+ 	           	                                } 
+ 	           	                                 })
+ 	           	                                  </script> -->
+</html>
